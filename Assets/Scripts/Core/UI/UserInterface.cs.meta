@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 04a60d41f8d1bb141baf4d3e5ebf950d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 232880
+  packageName: Connect - Game Template (2021 LTS)
+  packageVersion: 1.0.1
+  assetPath: Assets/Ilumisoft/Connect/Assets/Scripts/Core/UI/UserInterface.cs
+  uploadId: 587035
