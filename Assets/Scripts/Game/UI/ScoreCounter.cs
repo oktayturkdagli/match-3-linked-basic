@@ -4,47 +4,65 @@ using UnityEngine;
 
 namespace Match3Linked.Game
 {
+    /// <summary>
+    /// Manages the score UI and updates the displayed score with animation.
+    /// </summary>
     public class ScoreCounter : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI text;
-        
+        [SerializeField] private TextMeshProUGUI scoreText;
+
         private void OnEnable()
         {
             GameEvents.OnScoreChanged.AddListener(OnScoreChanged);
         }
-        
+
         private void OnDisable()
         {
             GameEvents.OnScoreChanged.RemoveListener(OnScoreChanged);
         }
-        
+
+        /// <summary>
+        /// Handles the score change event and starts the score animation coroutine.
+        /// </summary>
+        /// <param name="oldScore">The previous score before the change.</param>
+        /// <param name="newScore">The new score after the change.</param>
         private void OnScoreChanged(int oldScore, int newScore)
         {
             StopAllCoroutines();
-            StartCoroutine(UpdateTextCoroutine(oldScore, newScore, 1.0f));
+            StartCoroutine(AnimateScoreChange(oldScore, newScore, 1.0f));
         }
-        
-        private IEnumerator UpdateTextCoroutine(int from, int to, float time)
+
+        /// <summary>
+        /// Animates the score text change from the old score to the new score over time.
+        /// </summary>
+        /// <param name="startScore">The starting score value.</param>
+        /// <param name="endScore">The target score value.</param>
+        /// <param name="duration">The duration of the animation.</param>
+        /// <returns>A coroutine that updates the score text.</returns>
+        private IEnumerator AnimateScoreChange(int startScore, int endScore, float duration)
         {
-            float currentTime = Time.timeSinceLevelLoad;
+            // Track elapsed time
             float elapsedTime = 0.0f;
-            float lastTime = currentTime;
+            float initialTime = Time.timeSinceLevelLoad;
 
-            while (time > 0 && elapsedTime < time)
+            // Continuously update the score until the animation is complete
+            while (elapsedTime < duration)
             {
-                // Update Time
-                currentTime = Time.timeSinceLevelLoad;
-                elapsedTime += currentTime - lastTime;
-                lastTime = currentTime;
+                // Calculate the interpolation value based on elapsed time
+                elapsedTime += Time.timeSinceLevelLoad - initialTime;
+                initialTime = Time.timeSinceLevelLoad;
 
-                // Update text component with the interpolated value for the score
-                float value = Mathf.Lerp(from, to, elapsedTime / time);
-                text.text = ((int)value).ToString();
+                // Interpolate the score value
+                float interpolatedScore = Mathf.Lerp(startScore, endScore, elapsedTime / duration);
+
+                // Update the score text
+                scoreText.text = Mathf.RoundToInt(interpolatedScore).ToString();
 
                 yield return null;
             }
 
-            text.text = to.ToString();
+            // Ensure the final score is displayed
+            scoreText.text = endScore.ToString();
         }
     }
 }

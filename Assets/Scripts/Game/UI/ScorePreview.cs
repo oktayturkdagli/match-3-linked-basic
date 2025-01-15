@@ -4,17 +4,21 @@ using UnityEngine;
 
 namespace Match3Linked.Game
 {
+    /// <summary>
+    /// Handles the display of the score preview when selecting elements in the game.
+    /// </summary>
     public class ScorePreview : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI scorePreviewText;
-        private float _current;
+        
+        private float _currentScore;
         
         private void OnEnable()
         {
             GameEvents.OnSelectionChanged.AddListener(OnSelectionChanged);
             GameEvents.OnElementsDespawned.AddListener(OnElementsDespawned);
         }
-        
+
         private void OnDisable()
         {
             GameEvents.OnSelectionChanged.RemoveListener(OnSelectionChanged);
@@ -23,28 +27,39 @@ namespace Match3Linked.Game
 
         private void Start()
         {
-            ResetPreview();
+            ResetScorePreview();
         }
-        
+
+        /// <summary>
+        /// Resets the score preview when elements are despawned.
+        /// </summary>
+        /// <param name="count">The number of elements that were despawned.</param>
         private void OnElementsDespawned(int count)
         {
-            ResetPreview();
+            ResetScorePreview();
         }
-        
-        private void ResetPreview()
+
+        /// <summary>
+        /// Resets the score preview to an empty state.
+        /// </summary>
+        private void ResetScorePreview()
         {
             scorePreviewText.text = string.Empty;
-            _current = 0;
+            _currentScore = 0;
         }
-        
-        private void OnSelectionChanged(int count)
+
+        /// <summary>
+        /// Updates the score preview based on the number of selected elements.
+        /// </summary>
+        /// <param name="selectionCount">The number of selected elements.</param>
+        private void OnSelectionChanged(int selectionCount)
         {
-            if (count > 1)
+            if (selectionCount > 1)
             {
-                int scoreRevenuePreview = count * (count - 1);
+                int scorePreview = selectionCount * (selectionCount - 1);
 
                 StopAllCoroutines();
-                StartCoroutine(UpdateTextCoroutine((int)_current, scoreRevenuePreview, 0.5f));
+                StartCoroutine(UpdateScorePreviewCoroutine((int)_currentScore, scorePreview, 0.5f)); // Start a coroutine to animate the score.
             }
             else
             {
@@ -52,30 +67,36 @@ namespace Match3Linked.Game
                 scorePreviewText.text = string.Empty;
             }
         }
-        
-        private IEnumerator UpdateTextCoroutine(int from, int to, float time)
+
+        /// <summary>
+        /// Coroutine to smoothly update the score preview text over time.
+        /// </summary>
+        /// <param name="startValue">The starting score value.</param>
+        /// <param name="endValue">The target score value.</param>
+        /// <param name="duration">The duration of the transition.</param>
+        /// <returns>Yield instruction for the coroutine.</returns>
+        private IEnumerator UpdateScorePreviewCoroutine(int startValue, int endValue, float duration)
         {
-            float currentTime = Time.timeSinceLevelLoad;
             float elapsedTime = 0.0f;
-            float lastTime = currentTime;
+            float initialTime = Time.timeSinceLevelLoad;
 
-            while (time > 0 && elapsedTime < time)
+            // While the duration is not complete, animate the score value.
+            while (elapsedTime < duration)
             {
-                // Update Time
-                currentTime = Time.timeSinceLevelLoad;
-                elapsedTime += currentTime - lastTime;
-                lastTime = currentTime;
+                elapsedTime += Time.timeSinceLevelLoad - initialTime;
+                initialTime = Time.timeSinceLevelLoad;
 
-                // Update current value
-                _current = Mathf.Lerp(from, to, elapsedTime / time);
+                // Update the current score with a smooth transition.
+                _currentScore = Mathf.Lerp(startValue, endValue, elapsedTime / duration);
 
-                // Update the UI text component
-                scorePreviewText.text = "+ " + ((int)_current);
+                // Update the UI text to reflect the current score.
+                scorePreviewText.text = $"+ {(int)_currentScore}";
 
                 yield return null;
             }
 
-            scorePreviewText.text = "+ " + to;
+            // Finalize the score text to the target value.
+            scorePreviewText.text = $"+ {endValue}";
         }
     }
 }

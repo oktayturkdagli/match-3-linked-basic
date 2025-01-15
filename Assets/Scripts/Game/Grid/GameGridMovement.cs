@@ -3,86 +3,127 @@ using UnityEngine;
 
 namespace Match3Linked.Game
 {
+    /// <summary>
+    /// Handles the movement of elements on the game grid during gameplay.
+    /// </summary>
     public class GameGridMovement
     {
         private readonly GameGrid _grid;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameGridMovement"/> class.
+        /// </summary>
+        /// <param name="grid">The game grid that this movement system will operate on.</param>
         public GameGridMovement(GameGrid grid)
         {
             _grid = grid;
         }
         
-        public IEnumerator WaitForMovement()
+        /// <summary>
+        /// Coroutine to wait until all elements in the grid have completed their movement.
+        /// </summary>
+        /// <returns>An enumerator to be used in a coroutine.</returns>
+        public IEnumerator WaitForMovementToComplete()
         {
+            // Start the movement of elements
             MoveElements();
 
-            while (!IsMovementDone())
+            // Wait until all elements have finished moving
+            while (!IsMovementComplete())
             {
                 yield return new WaitForSeconds(0.05f);
             }
         }
         
-        private bool IsMovementDone()
+        /// <summary>
+        /// Checks if all elements in the grid have completed their movement.
+        /// </summary>
+        /// <returns>True if all elements have stopped moving; otherwise, false.</returns>
+        private bool IsMovementComplete()
         {
             foreach (GameGridElement element in _grid.Elements)
             {
                 if (element.IsSpawned && element.IsMoving)
                 {
-                    return false;
+                    return false; // If any element is still moving, return false
                 }
             }
 
-            return true;
+            return true; // All elements have finished moving
         }
         
+        /// <summary>
+        /// Initiates the movement process of elements in the grid.
+        /// Moves elements from the bottom to the top of the grid.
+        /// </summary>
         private void MoveElements()
         {
-            // Run from bottom to top through all rows
-            for (int y = 0; y < _grid.RowCount; y++)
+            // Loop through rows from top to bottom
+            for (int row = 0; row < _grid.RowCount; row++)
             {
-                for (int x = 0; x < _grid.ColumnCount; x++)
+                for (int column = 0; column < _grid.ColumnCount; column++)
                 {
-                    ProcessCell(x, y);
+                    ProcessCell(column, row);
                 }
             }
         }
         
+        /// <summary>
+        /// Processes a specific cell to move elements down if necessary.
+        /// </summary>
+        /// <param name="column">The column index of the cell.</param>
+        /// <param name="row">The row index of the cell.</param>
         private void ProcessCell(int column, int row)
         {
-            GameGridElement element = _grid.GetElement(column, row);
+            GameGridElement currentElement = _grid.GetElementAt(column, row);
 
-            // Is the element not spawned? 
-            // => Cell is empty and elements above should move downwards
-            if (!element.IsSpawned)
+            // If no element is spawned in the current cell, it means this cell is empty, and
+            // we need to move elements from above it downwards
+            if (!currentElement.IsSpawned)
             {
-                //Move the next element above it down
-                for (int i = row + 1; i < _grid.RowCount; i++)
+                MoveElementDownIfNeeded(column, row);
+            }
+        }
+
+        /// <summary>
+        /// Moves an element down from a higher row into an empty cell.
+        /// </summary>
+        /// <param name="column">The column index of the empty cell.</param>
+        /// <param name="emptyRow">The row index of the empty cell.</param>
+        private void MoveElementDownIfNeeded(int column, int emptyRow)
+        {
+            // Look for the first spawned element above the empty cell
+            for (int rowAbove = emptyRow + 1; rowAbove < _grid.RowCount; rowAbove++)
+            {
+                GameGridElement elementAbove = _grid.GetElementAt(column, rowAbove);
+
+                if (elementAbove && elementAbove.IsSpawned && !elementAbove.IsMoving)
                 {
-                    GameGridElement next = _grid.GetElement(column, i);
-
-                    if (next && next.IsSpawned && !next.IsMoving)
-                    {
-                        MoveElement(new Vector2Int(column, i), new Vector2Int(column, row));
-
-                        return;
-                    }
+                    // Move the element down to the empty cell
+                    MoveElement(new Vector2Int(column, rowAbove), new Vector2Int(column, emptyRow));
+                    return; // Only move one element at a time
                 }
             }
         }
 
-        private void MoveElement(Vector2Int oldPos, Vector2Int newPos)
+        /// <summary>
+        /// Moves an element from one position to another on the grid.
+        /// </summary>
+        /// <param name="oldPosition">The current position of the element.</param>
+        /// <param name="newPosition">The target position for the element.</param>
+        private void MoveElement(Vector2Int oldPosition, Vector2Int newPosition)
         {
-            //Catch the elements of the two grid positions
-            GameGridElement element1 = _grid.GetElement(oldPos.x, oldPos.y);
-            GameGridElement element2 = _grid.GetElement(newPos.x, newPos.y);
+            // Retrieve the elements at the two positions
+            GameGridElement oldElement = _grid.GetElementAt(oldPosition.x, oldPosition.y);
+            GameGridElement newElement = _grid.GetElementAt(newPosition.x, newPosition.y);
 
-            //Switch them in the grid
-            _grid.Elements[_grid.GridPositionToIndex(oldPos)] = element2;
-            _grid.Elements[_grid.GridPositionToIndex(newPos)] = element1;
+            // Swap their positions in the grid's element array
+            _grid.Elements[_grid.ConvertGridPositionToIndex(oldPosition)] = newElement;
+            _grid.Elements[_grid.ConvertGridPositionToIndex(newPosition)] = oldElement;
 
-            //Update world positions
-            element2.transform.position = _grid.GridToWorldPosition(oldPos);
-            element1.Move(_grid.GridToWorldPosition(newPos), 0.4f);
+            // Update the world position of the elements
+            newElement.transform.position = _grid.ConvertGridToWorldPosition(oldPosition);
+            oldElement.MoveTo(_grid.ConvertGridToWorldPosition(newPosition), 0.4f);
         }
     }
 }

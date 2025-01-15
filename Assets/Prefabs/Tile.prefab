@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3165e79f7ed294d479032e98c062a090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2810635509605711356}
+  elementSpriteRenderer: {fileID: 2810635509605711356}
 --- !u!58 &3579630180589900569
 CircleCollider2D:
   m_ObjectHideFlags: 0

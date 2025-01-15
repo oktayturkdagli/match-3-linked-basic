@@ -1185,7 +1185,7 @@ MonoBehaviour:
   restartButton: {fileID: 1679635660}
   backButton: {fileID: 885920340}
   scoreText: {fileID: 1559250524}
-  highScoreMessage: {fileID: 873571945}
+  newHighScoreMessage: {fileID: 873571945}
 --- !u!1 &2066044030
 GameObject:
   m_ObjectHideFlags: 0

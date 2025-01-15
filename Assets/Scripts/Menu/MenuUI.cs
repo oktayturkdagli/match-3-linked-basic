@@ -6,40 +6,80 @@ using UnityEngine.UI;
 
 namespace Match3Linked.Game
 {
-    public class MenuUI : UserInterface
+    /// <summary>
+    /// Handles the UI functionality for the main menu, including loading game and settings scenes,
+    /// displaying the high score, and exiting the application.
+    /// </summary>
+    public class MainMenuUI : UserInterface
     {
+        [Header("UI Elements")]
         [SerializeField] private Button playButton;
         [SerializeField] private Button settingsButton;
         [SerializeField] private TextMeshProUGUI highScoreText;
-
+        
         private void Start()
         {
-            // Listen to button click events
-            playButton.onClick.AddListener(LoadGameScene);
-            settingsButton.onClick.AddListener(LoadSettingsScene);
+            playButton.onClick.AddListener(OnPlayButtonClicked);
+            settingsButton.onClick.AddListener(OnSettingsButtonClicked);
+            DisplayHighScore();
+        }
 
-            // Set high score text
+        private void OnDestroy()
+        {
+            playButton.onClick.RemoveListener(OnPlayButtonClicked);
+            settingsButton.onClick.RemoveListener(OnSettingsButtonClicked);
+        }
+
+        /// <summary>
+        /// Displays the current high score on the UI.
+        /// </summary>
+        private void DisplayHighScore()
+        {
             highScoreText.text = HighScoreManager.Instance.HighScore.ToString();
         }
-        
-        private void LoadGameScene()
+
+        /// <summary>
+        /// Loads the game scene when the play button is clicked.
+        /// </summary>
+        private void OnPlayButtonClicked()
         {
-            SceneLoadingManager.Instance.LoadScene(SceneNames.Game);
+            LoadScene(SceneNames.Game);
         }
-        
-        private void LoadSettingsScene()
+
+        /// <summary>
+        /// Loads the settings scene when the settings button is clicked.
+        /// </summary>
+        private void OnSettingsButtonClicked()
         {
-            SceneLoadingManager.Instance.LoadScene(SceneNames.Settings);
+            LoadScene(SceneNames.Settings);
         }
-        
+
+        /// <summary>
+        /// Loads the specified scene by name.
+        /// </summary>
+        /// <param name="sceneName">The name of the scene to load.</param>
+        private void LoadScene(string sceneName)
+        {
+            SceneLoadingManager.Instance.LoadScene(sceneName);
+        }
+
+        /// <summary>
+        /// Handles back button click (typically used to exit the application).
+        /// </summary>
         protected override void OnBackButtonClick()
         {
             ExitApplication();
         }
 
+        /// <summary>
+        /// Exits the application and saves the player preferences.
+        /// </summary>
         private void ExitApplication()
         {
+            // Save player preferences before quitting
             PlayerPrefs.Save();
+
+            // Exit the application
             Application.Quit();
         }
     }

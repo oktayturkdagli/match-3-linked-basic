@@ -27,12 +27,12 @@ namespace Match3Linked.Game
 
         private void OnEnable()
         {
-            GameEvents.OnElementsDespawned.AddListener(HandleElementsDespawned);
+            GameEvents.OnElementsDespawned.AddListener(OnElementsDespawned);
         }
 
         private void OnDisable()
         {
-            GameEvents.OnElementsDespawned.RemoveListener(HandleElementsDespawned);
+            GameEvents.OnElementsDespawned.RemoveListener(OnElementsDespawned);
         }
 
         private IEnumerator Start()
@@ -109,7 +109,7 @@ namespace Match3Linked.Game
         /// Handles the event when elements are despawned and updates the score.
         /// </summary>
         /// <param name="despawnedCount">The number of elements that were despawned.</param>
-        private void HandleElementsDespawned(int despawnedCount)
+        private void OnElementsDespawned(int despawnedCount)
         {
             int previousScore = Score;
             

@@ -171,7 +171,7 @@ MonoBehaviour:
   cellSize: 0.8
   selectionLine: {fileID: 993672602}
   gridElementPrefab: {fileID: 49454702705552990, guid: 030bedf85bdce4e2a86d85d4f9c593f1, type: 3}
-  gameGridElementInfoList:
+  elementInfoList:
   - colorType: 0
     sprite: {fileID: 21300000, guid: 25ac0502b9b66405a8280e34402fc271, type: 3}
   - colorType: 1
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f392d6f665ad6094b85a1e0198f5b8b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 168544186}
+  scoreText: {fileID: 168544186}
 --- !u!114 &168544186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backButton: {fileID: 379875775}
-  grid: {fileID: 162214773}
+  gameGrid: {fileID: 162214773}
   movesAvailable: 20
 --- !u!1 &993672599
 GameObject:
@@ -1212,7 +1212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f0df60c3b98894b9e52192762cbd63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterText: {fileID: 1199106231}
+  moveCountText: {fileID: 1199106231}
 --- !u!114 &1199106231
 MonoBehaviour:
   m_ObjectHideFlags: 0
