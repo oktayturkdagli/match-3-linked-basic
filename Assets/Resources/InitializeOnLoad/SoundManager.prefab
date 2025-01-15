@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 0a10687503d65434686d5f53ad4ebca8, type: 2}
-  audioClipList:
+  audioClips:
   - {fileID: 8300000, guid: ebcfdd4c19e414a28aed535e6aef4526, type: 3}
   - {fileID: 8300000, guid: 43409c9d14f60405eac80576ecb97608, type: 3}
   - {fileID: 8300000, guid: 924f9cfd1d5e74ae488a273a6a99b435, type: 3}
