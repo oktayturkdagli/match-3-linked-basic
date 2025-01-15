@@ -41,7 +41,7 @@ namespace Match3Linked.Game
                     GameGridElement element = Instantiate(gridElementPrefab, GridContainer.transform, true);
                     element.transform.localScale = Vector2.one * cellSize;
                     element.transform.position = this.GridToWorldPosition(x, y);
-                    var randomElementInfo = GameGridElementInfoList.GetRandom();
+                    var randomElementInfo = GameGridElementInfoList.GetRandomElement();
                     element.Sprite = randomElementInfo.sprite;
                     element.ColorType = randomElementInfo.colorType;
                     Elements.Add(element);

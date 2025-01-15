@@ -22,7 +22,7 @@ namespace Match3Linked.Game
             {
                 if (!element.IsSpawned)
                 {
-                    var randomElementInfo = _grid.GameGridElementInfoList.GetRandom();
+                    var randomElementInfo = _grid.GameGridElementInfoList.GetRandomElement();
                     element.Sprite = randomElementInfo.sprite;
                     element.ColorType = randomElementInfo.colorType;
                     element.Spawn(_grid.CellSize);

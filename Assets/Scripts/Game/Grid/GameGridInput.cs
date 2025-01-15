@@ -96,7 +96,7 @@ namespace Match3Linked.Game
             if (SelectedElements.Count == 0)
             {
                 // Cache selected color
-                _selectionLine.Color = element.ColorType.GetColor();
+                _selectionLine.Color = element.ColorType.ToUnityColor();
 
                 //Add element to selection
                 AddElementToSelection(element);
@@ -133,7 +133,7 @@ namespace Match3Linked.Game
         
         private bool HasValidColor(GameGridElement element)
         {
-            return _selectionLine.Color == element.ColorType.GetColor();
+            return _selectionLine.Color == element.ColorType.ToUnityColor();
         }
         
         private bool IsInDistance(GameGridElement element)
@@ -151,7 +151,7 @@ namespace Match3Linked.Game
             }
 
             SelectedElements.Add(element);
-            _selectionLine.Color = element.ColorType.GetColor();
+            _selectionLine.Color = element.ColorType.ToUnityColor();
             _selectionLine.SetPositions(SelectedElements);
             GameEvents.OnSelectionChanged.Invoke(SelectedElements.Count);
         }

@@ -2,10 +2,19 @@ using UnityEngine;
 
 namespace Match3Linked
 {
+    /// <summary>
+    /// A generic Singleton class for managing a single instance of a MonoBehaviour-derived type.
+    /// Ensures that only one instance of the specified type exists in the scene.
+    /// </summary>
+    /// <typeparam name="T">The type of the singleton class, which must inherit from Component.</typeparam>
     public class Singleton<T> : MonoBehaviour where T : Component
     {
         private static T _instance;
 
+        /// <summary>
+        /// Gets the singleton instance of the specified type.
+        /// If no instance exists, one will be created.
+        /// </summary>
         public static T Instance
         {
             get
@@ -16,11 +25,11 @@ namespace Match3Linked
 
                     if (!_instance)
                     {
-                        _instance = SetupInstance();
+                        _instance = CreateNewInstance();
                     }
                     else
                     {
-                        Debug.Log($"[Singleton] Instance of {typeof(T).Name} already exists: {_instance.gameObject.name}");
+                        Debug.Log($"[Singleton] An instance of {typeof(T).Name} already exists: {_instance.gameObject.name}");
                     }
                 }
 
@@ -28,23 +37,32 @@ namespace Match3Linked
             }
         }
 
+        /// <summary>
+        /// Ensures the singleton instance is properly assigned or destroys duplicates.
+        /// </summary>
         protected virtual void Awake()
         {
-            if (!_instance)
+            if (_instance == null)
             {
                 _instance = this as T;
             }
             else if (_instance != this)
             {
+                Debug.LogWarning($"[Singleton] Duplicate instance of {typeof(T).Name} found. Destroying the duplicate on {gameObject.name}.");
                 Destroy(gameObject);
             }
         }
 
-        private static T SetupInstance()
+        /// <summary>
+        /// Creates a new GameObject with the specified singleton type as a component.
+        /// </summary>
+        /// <returns>The created singleton instance.</returns>
+        private static T CreateNewInstance()
         {
-            var gameObj = new GameObject(typeof(T).Name);
-            var instance = gameObj.AddComponent<T>();
-            return instance;
+            var newGameObject = new GameObject(typeof(T).Name);
+            var newInstance = newGameObject.AddComponent<T>();
+            Debug.Log($"[Singleton] No instance of {typeof(T).Name} found. A new instance has been created.");
+            return newInstance;
         }
     }
 }

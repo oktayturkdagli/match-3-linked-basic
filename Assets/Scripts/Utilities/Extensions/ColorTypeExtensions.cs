@@ -1,25 +1,27 @@
-using Match3Linked.Game;
 using UnityEngine;
 
-namespace Match3Linked
+namespace Match3Linked.Game
 {
+    /// <summary>
+    /// Provides extension methods for the ColorType enum.
+    /// </summary>
     public static class ColorTypeExtensions
     {
-        public static Color GetColor(this ColorType colorType)
+        /// <summary>
+        /// Maps a ColorType to a corresponding Unity Color.
+        /// </summary>
+        /// <param name="colorType">The ColorType to map.</param>
+        /// <returns>The Unity Color corresponding to the specified ColorType.</returns>
+        public static Color ToUnityColor(this ColorType colorType)
         {
-            switch (colorType)
+            return colorType switch
             {
-                case ColorType.Color1:
-                    return Color.yellow;
-                case ColorType.Color2:
-                    return Color.blue;
-                case ColorType.Color3:
-                    return Color.green;
-                case ColorType.Color4:
-                    return Color.red;
-                default:
-                    return Color.yellow;
-            }
+                ColorType.Color1 => Color.yellow,
+                ColorType.Color2 => Color.blue,
+                ColorType.Color3 => Color.green,
+                ColorType.Color4 => Color.red,
+                _ => Color.yellow
+            };
         }
     }
 }
