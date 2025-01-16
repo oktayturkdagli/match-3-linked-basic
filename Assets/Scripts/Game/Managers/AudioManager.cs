@@ -8,7 +8,7 @@ namespace Match3Linked.Game
     /// Manages audio playback and volume settings within the game.
     /// </summary>
     [RequireComponent(typeof(AudioSource))]
-    public class AudioManager : Singleton<AudioManager>
+    public class AudioManager : SingletonPersistent<AudioManager>
     {
         [SerializeField] private AudioMixer audioMixer; // The AudioMixer used for controlling audio parameters.
         [SerializeField] private List<AudioClip> audioClips; // List of available audio clips for playback.
