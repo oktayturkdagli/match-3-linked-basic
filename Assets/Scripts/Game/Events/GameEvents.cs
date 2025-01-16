@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-namespace Match3Linked.Game
+namespace Match3Linked
 {
     /// <summary>
     /// Event for broadcasting an integer value.

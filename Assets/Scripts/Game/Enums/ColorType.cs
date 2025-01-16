@@ -1,4 +1,4 @@
-namespace Match3Linked.Game
+namespace Match3Linked
 {
     /// <summary>
     /// Represents the different types of colors that can be used in the game.
