@@ -36,7 +36,6 @@ namespace Match3Linked.Game
 
         private IEnumerator Start()
         {
-            backButton.onClick.AddListener(OnBackButtonClick);
             InitializeGame();
 
             // Start the main game loop
@@ -44,23 +43,6 @@ namespace Match3Linked.Game
 
             // End the game after the loop
             yield return StartCoroutine(EndGame());
-        }
-
-        /// <summary>
-        /// Handles the back button press event to navigate to the menu.
-        /// </summary>
-        private void OnBackButtonClick()
-        {
-            SceneLoadingManager.Instance.LoadScene(SceneNames.Menu);
-        }
-
-        private void Update()
-        {
-            // Check for the Escape key press to trigger back button press
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                OnBackButtonClick();
-            }
         }
 
         /// <summary>
@@ -101,7 +83,7 @@ namespace Match3Linked.Game
         private IEnumerator EndGame()
         {
             yield return new WaitForSeconds(0.5f);
-            SceneLoadingManager.Instance.LoadScene(SceneNames.GameOver);
+            GetComponent<ScreenTransition>().PerformTransition();
         }
 
         /// <summary>

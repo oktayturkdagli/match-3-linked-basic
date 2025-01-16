@@ -720,7 +720,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e8a9cb640f14a48f19816fbf62bc9f03, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e8a9cb640f14a48f19816fbf62bc9f03, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -958,6 +958,7 @@ GameObject:
   - component: {fileID: 1412195654}
   - component: {fileID: 1412195653}
   - component: {fileID: 1412195652}
+  - component: {fileID: 1412195655}
   m_Layer: 5
   m_Name: Button - Settings
   m_TagString: Untagged
@@ -1027,7 +1028,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1412195653}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1412195655}
+        m_TargetAssemblyTypeName: Match3Linked.ScreenTransition, Assembly-CSharp
+        m_MethodName: PerformTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1412195653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,6 +1079,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412195650}
   m_CullTransparentMesh: 0
+--- !u!114 &1412195655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412195650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4feda99b32f9945ca9591ffdb7b218b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: Settings
+  duration: 1
+  color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!850595691 &1469554489
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1276,6 +1304,7 @@ GameObject:
   - component: {fileID: 1737756576}
   - component: {fileID: 1737756575}
   - component: {fileID: 1737756577}
+  - component: {fileID: 1737756578}
   m_Layer: 5
   m_Name: Button - Play
   m_TagString: Untagged
@@ -1384,7 +1413,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1737756575}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737756578}
+        m_TargetAssemblyTypeName: Match3Linked.ScreenTransition, Assembly-CSharp
+        m_MethodName: PerformTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1737756578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737756572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4feda99b32f9945ca9591ffdb7b218b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: Game
+  duration: 1
+  color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &2015525732
 GameObject:
   m_ObjectHideFlags: 0

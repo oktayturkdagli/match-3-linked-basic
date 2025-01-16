@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Match3Linked.Game;
 using UnityEngine;
 
 namespace Match3Linked.Game
