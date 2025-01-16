@@ -13,6 +13,9 @@ namespace Match3Linked.Game
         [SerializeField] private float cellSize = 1.0f; 
         [SerializeField] private SelectionLine selectionLine;
         [SerializeField] private GameGridElement gridElementPrefab;
+        [SerializeField] private GameObject gridElementBackgroundParent;
+        [SerializeField] private GameObject gridElementBackgroundPrefab;
+
         [SerializeField] private List<GridElementInfo> elementInfoList = new(); // List of possible grid element info
 
         private GameGridInput _gridInput; // Handles input actions on the grid
@@ -76,6 +79,11 @@ namespace Match3Linked.Game
 
                     // Add the newly created element to the grid elements list
                     Elements.Add(element);
+
+                    // Instantiate a new grid element background at the specified position
+                    GameObject background = Instantiate(gridElementBackgroundPrefab, gridElementBackgroundParent.transform, true);
+                    background.transform.localScale = Vector2.one;
+                    background.transform.position = GridToWorldPosition(column, row);
                 }
             }
         }
