@@ -1,15 +1,14 @@
 ﻿using TMPro;
-using Match3Linked.Core;
-using Match3Linked.Core.UI;
+using Match3Linked.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Match3Linked.Game
+namespace Match3Linked.UI
 {
     /// <summary>
     /// Handles the user interface for the Game Over screen, including score display, restart functionality, and navigation to the main menu.
     /// </summary>
-    public class GameOverUI : UserInterface
+    public class UIGameOver : MonoBehaviour
     {
         [SerializeField] private Button restartButton;
         [SerializeField] private Button backButton;
@@ -18,8 +17,8 @@ namespace Match3Linked.Game
 
         private void Start()
         {
-            restartButton.onClick.AddListener(OnRestartButtonClick);
             backButton.onClick.AddListener(OnBackButtonClick);
+            restartButton.onClick.AddListener(OnRestartButtonClick);
 
             DisplayScore();
             CheckForNewHighScore();
@@ -27,8 +26,24 @@ namespace Match3Linked.Game
 
         private void OnDestroy()
         {
-            restartButton.onClick.RemoveListener(OnRestartButtonClick);
             backButton.onClick.RemoveListener(OnBackButtonClick);
+            restartButton.onClick.RemoveListener(OnRestartButtonClick);
+        }
+        
+        /// <summary>
+        /// Handles the back button click event, navigating back to the main menu.
+        /// </summary>
+        private void OnBackButtonClick()
+        {
+            SceneLoadingManager.Instance.LoadScene(SceneNames.Menu);
+        }
+        
+        /// <summary>
+        /// Handles the restart button click event, reloading the game scene.
+        /// </summary>
+        private void OnRestartButtonClick()
+        {
+            SceneLoadingManager.Instance.LoadScene(SceneNames.Game);
         }
 
         /// <summary>
@@ -49,22 +64,6 @@ namespace Match3Linked.Game
                 HighScoreManager.Instance.HighScore = GameManager.Score;
                 newHighScoreMessage.SetActive(true);
             }
-        }
-
-        /// <summary>
-        /// Handles the restart button click event, reloading the game scene.
-        /// </summary>
-        private void OnRestartButtonClick()
-        {
-            SceneLoadingManager.Instance.LoadScene(SceneNames.Game);
-        }
-
-        /// <summary>
-        /// Handles the back button click event, navigating back to the main menu.
-        /// </summary>
-        protected override void OnBackButtonClick()
-        {
-            SceneLoadingManager.Instance.LoadScene(SceneNames.Menu);
         }
     }
 }

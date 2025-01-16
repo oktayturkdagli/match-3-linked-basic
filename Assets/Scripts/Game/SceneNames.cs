@@ -1,4 +1,4 @@
-﻿namespace Match3Linked
+﻿namespace Match3Linked.Game
 {
     /// <summary>
     /// Provides the names of all scenes used in the game.

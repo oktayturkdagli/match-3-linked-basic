@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Match3Linked.Core
+namespace Match3Linked.Game
 {
     /// <summary>
     /// Manages the high score for the game, providing functionality to get and set the high score.

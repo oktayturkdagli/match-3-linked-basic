@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Match3Linked.Core
+namespace Match3Linked.Game
 {
     /// <summary>
     /// Manages audio playback and volume settings within the game.

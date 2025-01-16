@@ -1,15 +1,15 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Match3Linked.Core;
+using Match3Linked.Game;
 
-namespace Match3Linked.Game
+namespace Match3Linked.UI
 {
     /// <summary>
     /// This class handles the volume slider UI component, allowing users to adjust the audio volume.
     /// It updates both the slider and the displayed volume percentage in real-time.
     /// </summary>
-    public class VolumeSlider : MonoBehaviour
+    public class UIVolumeSlider : MonoBehaviour
     {
         [SerializeField] private Slider volumeSlider;  // Slider UI component for volume control
         [SerializeField] private TextMeshProUGUI volumePercentageText;  // Text UI component for displaying volume as a percentage

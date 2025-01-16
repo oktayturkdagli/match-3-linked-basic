@@ -1,13 +1,14 @@
 ﻿using TMPro;
 using System.Collections;
+using Match3Linked.Game;
 using UnityEngine;
 
-namespace Match3Linked.Game
+namespace Match3Linked.UI
 {
     /// <summary>
     /// Manages the score UI and updates the displayed score with animation.
     /// </summary>
-    public class ScoreCounter : MonoBehaviour
+    public class UIScoreCounter : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI scoreText;
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Match3Linked.Core
+namespace Match3Linked.Game
 {
     /// <summary>
     /// A component that adjusts the camera's aspect ratio to support a minimum width.

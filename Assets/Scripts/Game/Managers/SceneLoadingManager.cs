@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Match3Linked.Core
+namespace Match3Linked.Game
 {
     /// <summary>
     /// Manages scene loading with fade transitions.

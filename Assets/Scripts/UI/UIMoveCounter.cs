@@ -1,13 +1,14 @@
-﻿using TMPro;
+﻿using Match3Linked.Game;
+using TMPro;
 using UnityEngine;
 
-namespace Match3Linked.Game
+namespace Match3Linked.UI
 {
     /// <summary>
     /// This class is responsible for updating the move counter display based on available moves.
     /// It listens for events when elements are despawned and updates the UI accordingly.
     /// </summary>
-    public class MoveCounter : MonoBehaviour
+    public class UIMoveCounter : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI moveCountText;
 

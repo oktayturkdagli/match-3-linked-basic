@@ -1,13 +1,14 @@
 ﻿using TMPro;
 using System.Collections;
+using Match3Linked.Game;
 using UnityEngine;
 
-namespace Match3Linked.Game
+namespace Match3Linked.UI
 {
     /// <summary>
     /// Handles the display of the score preview when selecting elements in the game.
     /// </summary>
-    public class ScorePreview : MonoBehaviour
+    public class UIScorePreview : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI scorePreviewText;
         

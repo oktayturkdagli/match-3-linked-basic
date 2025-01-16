@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Match3Linked
+namespace Match3Linked.Game
 {
     /// <summary>
     /// This class is responsible for initializing necessary game objects before any scene is loaded.
