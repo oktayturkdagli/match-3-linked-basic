@@ -417,7 +417,6 @@ GameObject:
   - component: {fileID: 379875774}
   - component: {fileID: 379875773}
   - component: {fileID: 379875775}
-  - component: {fileID: 379875776}
   m_Layer: 5
   m_Name: Button - Back
   m_TagString: Untagged
@@ -525,34 +524,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 379875773}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 379875776}
-        m_TargetAssemblyTypeName: Match3Linked.ScreenTransition, Assembly-CSharp
-        m_MethodName: PerformTransition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &379875776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379875770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4feda99b32f9945ca9591ffdb7b218b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: Menu
-  duration: 1
-  color: {r: 0, g: 0, b: 0, a: 1}
+      m_Calls: []
 --- !u!1 &882776617
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +834,6 @@ GameObject:
   m_Component:
   - component: {fileID: 993520665}
   - component: {fileID: 993520666}
-  - component: {fileID: 993520667}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -903,21 +874,6 @@ MonoBehaviour:
   backButton: {fileID: 379875775}
   gameGrid: {fileID: 162214773}
   movesAvailable: 5
---- !u!114 &993520667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993520664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4feda99b32f9945ca9591ffdb7b218b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: GameOver
-  duration: 1
-  color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &993672599
 GameObject:
   m_ObjectHideFlags: 0

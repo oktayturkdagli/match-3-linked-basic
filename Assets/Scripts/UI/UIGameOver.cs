@@ -17,8 +17,33 @@ namespace Match3Linked.UI
 
         private void Start()
         {
+            backButton.onClick.AddListener(OnBackButtonClick);
+            restartButton.onClick.AddListener(OnRestartButtonClick);
+
             DisplayScore();
             CheckForNewHighScore();
+        }
+
+        private void OnDestroy()
+        {
+            backButton.onClick.RemoveListener(OnBackButtonClick);
+            restartButton.onClick.RemoveListener(OnRestartButtonClick);
+        }
+        
+        /// <summary>
+        /// Handles the back button click event, navigating back to the main menu.
+        /// </summary>
+        private void OnBackButtonClick()
+        {
+            SceneManager.Instance.LoadScene("Menu");
+        }
+        
+        /// <summary>
+        /// Handles the restart button click event, reloading the game scene.
+        /// </summary>
+        private void OnRestartButtonClick()
+        {
+            SceneManager.Instance.LoadScene("Game");
         }
 
         /// <summary>

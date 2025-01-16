@@ -16,6 +16,34 @@ namespace Match3Linked.UI
         [SerializeField] private Button settingsButton;
         [SerializeField] private TextMeshProUGUI highScoreText;
         
+        private void Start()
+        {
+            playButton.onClick.AddListener(OnPlayButtonClicked);
+            settingsButton.onClick.AddListener(OnSettingsButtonClicked);
+            DisplayHighScore();
+        }
+
+        private void OnDestroy()
+        {
+            playButton.onClick.RemoveListener(OnPlayButtonClicked);
+            settingsButton.onClick.RemoveListener(OnSettingsButtonClicked);
+        }
+        
+        /// <summary>
+        /// Loads the game scene when the play button is clicked.
+        /// </summary>
+        private void OnPlayButtonClicked()
+        {
+            SceneManager.Instance.LoadScene("Game");
+        }
+        
+        /// <summary>
+        /// Loads the settings scene when the settings button is clicked.
+        /// </summary>
+        private void OnSettingsButtonClicked()
+        {
+            SceneManager.Instance.LoadScene("Settings");
+        }
 
         /// <summary>
         /// Displays the current high score on the UI.

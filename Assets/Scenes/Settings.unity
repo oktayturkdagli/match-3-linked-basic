@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01933369c19d4e14b9b7ea96e76be676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 0}
+  volumeSlider: {fileID: 2120391359}
   volumePercentageText: {fileID: 1682435013}
 --- !u!1 &1133259226
 GameObject:
@@ -1290,7 +1290,7 @@ GameObject:
   - component: {fileID: 2015525733}
   - component: {fileID: 2015525737}
   m_Layer: 5
-  m_Name: UI
+  m_Name: SettingsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1391,7 +1391,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2015525732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68494e74c7a0a58458bb589f840b4510, type: 3}
+  m_Script: {fileID: 11500000, guid: 15bb3fc5499042d4a91f089a0905d1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   backToMenuButton: {fileID: 7730654498835489168}
@@ -1541,7 +1541,6 @@ GameObject:
   - component: {fileID: 7730654498835489167}
   - component: {fileID: 7730654498835489166}
   - component: {fileID: 7730654498835489168}
-  - component: {fileID: 7730654498835489169}
   m_Layer: 5
   m_Name: Button - Back
   m_TagString: Untagged
@@ -1649,34 +1648,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7730654498835489166}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7730654498835489169}
-        m_TargetAssemblyTypeName: Match3Linked.ScreenTransition, Assembly-CSharp
-        m_MethodName: PerformTransition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7730654498835489169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7730654498835489164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4feda99b32f9945ca9591ffdb7b218b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene: Menu
-  duration: 1
-  color: {r: 0, g: 0, b: 0, a: 1}
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -11,6 +11,11 @@ namespace Match3Linked
     /// Event for broadcasting changes in the score, with the previous and current score.
     /// </summary>
     public class ScoreChangedEvent : UnityEvent<int, int> { }
+    
+    /// <summary>
+    /// Event for broadcasting changes in the scene, with the previous and current scene.
+    /// </summary>
+    public class SceneChangeEvent : UnityEvent<int, int> { }
 
     /// <summary>
     /// A static class to hold game-related events.
@@ -31,5 +36,10 @@ namespace Match3Linked
         /// Triggered when the score changes.
         /// </summary>
         public static ScoreChangedEvent OnScoreChanged { get; } = new();
+        
+        /// <summary>
+        /// Triggered when the scene changes.
+        /// </summary>
+        public static SceneChangeEvent OnSceneChange { get; } = new();
     }
 }
