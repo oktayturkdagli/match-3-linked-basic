@@ -59,9 +59,8 @@ namespace Match3Linked
         /// <returns>The created singleton instance.</returns>
         private static T CreateNewInstance()
         {
-            var newGameObject = new GameObject(typeof(T).Name);
+            var newGameObject = new GameObject($"{typeof(T).Name}(Singleton)");
             var newInstance = newGameObject.AddComponent<T>();
-            Debug.Log($"[Singleton] No instance of {typeof(T).Name} found. A new instance has been created.");
             return newInstance;
         }
     }

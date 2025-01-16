@@ -7,7 +7,7 @@ namespace Match3Linked
     /// This instance persists across scenes and is created automatically if it does not exist.
     /// </summary>
     /// <typeparam name="T">The type of the component to be a singleton.</typeparam>
-    public class PersistentSingleton<T> : MonoBehaviour where T : Component
+    public class SingletonPersistent<T> : MonoBehaviour where T : Component
     {
         private static T _instance;
 
@@ -60,10 +60,9 @@ namespace Match3Linked
         /// <returns>The created instance of type T.</returns>
         private static T CreateNewSingletonInstance()
         {
-            var singletonObject = new GameObject($"{typeof(T).Name}_Singleton");
+            var singletonObject = new GameObject($"{typeof(T).Name}(SingletonPersistent)");
             var instance = singletonObject.AddComponent<T>();
             DontDestroyOnLoad(singletonObject);
-            Debug.Log($"[PersistentSingleton] Created new singleton instance of {typeof(T).Name}: {singletonObject.name}");
             return instance;
         }
     }
