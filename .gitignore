@@ -71,59 +71,13 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# macOS Finder directory meta data
+*.DS_Store
+
+# rider files
 /.idea
-/IOS
-/IOSBuild
-/Android
-/AndroidBuild
-/Assets/AssetBundles
-/Assets/StreamingAssets
-.DS_Store
-Assets/.DS_Store
-Assets/Art/.DS_Store
-Assets/Art/Animation/.DS_Store
-Assets/Art/Audio/.DS_Store
-Assets/Art/Game/.DS_Store
-Assets/Art/Game/Bombs/.DS_Store
-Assets/Art/Game/Missiles/.DS_Store
-Assets/Art/Game/Planets/.DS_Store
-Assets/Art/Game/Planets/Flat/.DS_Store
-Assets/Art/Game/Planets/Stylized/.DS_Store
-Assets/Art/Game/Probs/.DS_Store
-Assets/Art/Game/Spacesuits/.DS_Store
-Assets/Art/Game/Spacesuits/Realistic/.DS_Store
-Assets/Art/Game/Spacesuits/Stylized/.DS_Store
-Assets/Art/Materials/.DS_Store
-Assets/Art/Sprites/.DS_Store
-Assets/Art/Sprites/UI/.DS_Store
-Assets/Art/Sprites/UI/Shapes/.DS_Store
-Assets/Plugins/.DS_Store
-Assets/Plugins/Layer Lab/.DS_Store
-Assets/Plugins/Layer Lab/GUI Pro-SuperCasual/.DS_Store
-Assets/Plugins/Layer Lab/GUI Pro-SuperCasual/ResourcesData/Sprites/Components/.DS_Store
-Assets/Scenes/.DS_Store
-Assets/ScriptableObjects/.DS_Store
-Assets/ScriptableObjects/SceneData/.DS_Store
-Assets/Scripts/.DS_Store
-Assets/Scripts/Editor/.DS_Store
-Assets/Scripts/Runtime/.DS_Store
-Assets/Scripts/Runtime/Others/Animation/.DS_Store
-Assets/Scripts/Runtime/Others/Audio/.DS_Store
-Assets/Scripts/Runtime/Others/Camera/.DS_Store
-Assets/Scripts/Runtime/Others/Effects/.DS_Store
-Assets/Scripts/Runtime/Others/Events/.DS_Store
-Assets/Scripts/Runtime/Others/Events/Level/.DS_Store
-Assets/Scripts/Runtime/Others/Gameplay/.DS_Store
-Assets/Scripts/Runtime/Others/Interaction/.DS_Store
-Assets/Scripts/Runtime/Others/Inventory/.DS_Store
-Assets/Scripts/Runtime/Others/SaveSystem/.DS_Store
-Assets/Scripts/Runtime/Others/SceneManagement/.DS_Store
-Assets/Scripts/Runtime/Others/UI/.DS_Store
-Images/.DS_Store
-Images/Bombs/.DS_Store
-Images/Missiles/.DS_Store
-Images/Parallaxes/.DS_Store
-Images/Planets/.DS_Store
-Images/Spacesuits/.DS_Store
-Images/Spacesuits/Realistic/.DS_Store
-Images/Spacesuits/Stylized/.DS_Store
+
+# VSCode files
+/.vscode
+
